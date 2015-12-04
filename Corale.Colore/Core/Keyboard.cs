@@ -88,6 +88,23 @@ namespace Corale.Colore.Core
         }
 
         /// <summary>
+        /// Parses a string into a <see cref="Key" />.
+        /// </summary>
+        /// <param name="key">The key to access as a string.</param>
+        /// <returns>The actual <see cref="Key" /> representation or <see cref="Key.Invalid" /> if string is incorrect.</returns>
+        private static Key ParseKey(string key)
+        {
+            try
+            {
+                return (Key)Enum.Parse(typeof(Key), key);
+            }
+            catch (Exception e)
+            {
+               return Key.Invalid;
+            }
+        }
+
+        /// <summary>
         /// Gets the application-wide instance of the <see cref="IKeyboard" /> interface.
         /// </summary>
         [PublicAPI]
@@ -121,11 +138,29 @@ namespace Corale.Colore.Core
         }
 
         /// <summary>
+        /// Gets or sets the <see cref="Color" /> for a specific <see cref="Key" /> on the keyboard.
+        /// </summary>
+        /// <param name="key">The key to access.</param>
+        /// <returns>The color currently set for the specified key.</returns>
+        public Color this[string key]
+        {
+            get
+            {
+                return _grid[ParseKey(key)];
+            }
+
+            set
+            {
+                SetKey(ParseKey(key), value);
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the <see cref="Color" /> for a specific row and column on the
         /// keyboard grid.
         /// </summary>
         /// <param name="row">Row to query, between 1 and <see cref="Constants.MaxRows" />.</param>
-        /// <param name="column">Column to query, between 1 and <see cref="Constants.MaxColumns" />.</param>
+        /// <param name="column">Column to query, between 1 and <see cref="Constants.MaxColumns" />.</param>ssas
         /// <returns>The color currently set on the specified position.</returns>
         public Color this[Size row, Size column]
         {
@@ -160,6 +195,21 @@ namespace Corale.Colore.Core
         }
 
         /// <summary>
+        /// Returns whether the specified key is safe to use.
+        /// </summary>
+        /// <param name="key">The <see cref="Key" /> to test.</param>
+        /// <returns><c>true</c> if the <see cref="Key" /> is safe, otherwise <c>false</c>.</returns>
+        /// <remarks>
+        /// A "safe" key means one that will always be visible if lit up,
+        /// regardless of the physical layout of the keyboard.
+        /// </remarks>
+        [PublicAPI]
+        public static bool IsKeySafe(string key)
+        {
+            return IsKeySafe(ParseKey(key));
+        }
+
+        /// <summary>
         /// Returns whether the specified position is safe to use.
         /// </summary>
         /// <param name="row">Row to query.</param>
@@ -183,6 +233,16 @@ namespace Corale.Colore.Core
         public bool IsSet(Key key)
         {
             return _grid[key] != Color.Black;
+        }
+
+        /// <summary>
+        /// Returns whether a certain key parsed as a string has had a custom color set.
+        /// </summary>
+        /// <param name="key">Key to check.</param>
+        /// <returns><c>true</c> if the key has a color set, otherwise <c>false</c>.</returns>
+        public bool IsSet(string key)
+        {
+            return IsSet(ParseKey(key));
         }
 
         /// <summary>
@@ -310,6 +370,9 @@ namespace Corale.Colore.Core
         /// <param name="clear">If true, the keyboard will first be cleared before setting the key.</param>
         public void SetKey(Key key, Color color, bool clear = false)
         {
+            if (key == Key.Invalid)
+                return;
+
             if (clear)
                 _grid.Clear();
 
@@ -331,6 +394,19 @@ namespace Corale.Colore.Core
         }
 
         /// <summary>
+        /// Sets the specified color on a set of keys.
+        /// </summary>
+        /// <param name="color">The <see cref="Color" /> to apply.</param>
+        /// <param name="key">First key to change.</param>
+        /// <param name="keys">Additional keys that should also have the color applied.</param>
+        public void SetKeys(Color color, string key, params string[] keys)
+        {
+            SetKey(ParseKey(key), color);
+            foreach (var additional in keys)
+                SetKey(ParseKey(additional), color);
+        }
+
+        /// <summary>
         /// Sets a color on a collection of keys.
         /// </summary>
         /// <param name="keys">The keys which should have their color changed.</param>
@@ -346,6 +422,24 @@ namespace Corale.Colore.Core
 
             foreach (var key in keys)
                 SetKey(key, color);
+        }
+
+        /// <summary>
+        /// Sets a color on a collection of keys.
+        /// </summary>
+        /// <param name="keys">The keys which should have their color changed.</param>
+        /// <param name="color">The <see cref="Color" /> to apply.</param>
+        /// <param name="clear">
+        /// If <c>true</c>, the keyboard keys will be cleared before
+        /// applying the new colors.
+        /// </param>
+        public void SetKeys(IEnumerable<string> keys, Color color, bool clear = false)
+        {
+            if (clear)
+                Clear();
+
+            foreach (var key in keys)
+                SetKey(ParseKey(key), color);
         }
 
         /// <summary>
