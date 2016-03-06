@@ -34,6 +34,13 @@ namespace Corale.Colore.Core
     public interface IHeadset : IDevice
     {
         /// <summary>
+        /// Gets a value indicating whether this device
+        /// is connected or not.
+        /// </summary>
+        [PublicAPI]
+        bool Connected { get; }
+
+        /// <summary>
         /// Sets an effect on the headset that doesn't
         /// take any parameters, currently only valid
         /// for the <see cref="Effect.SpectrumCycling" /> effect.

@@ -42,6 +42,11 @@ namespace Corale.Colore.Core
         private static readonly ILog Log = LogManager.GetLogger(typeof(Headset));
 
         /// <summary>
+        /// Holds the value for whether this device type is connected.
+        /// </summary>
+        private static bool _connected;
+
+        /// <summary>
         /// Holds the application-wide instance of the <see cref="IHeadset" /> interface.
         /// </summary>
         private static IHeadset _instance;
@@ -53,12 +58,21 @@ namespace Corale.Colore.Core
         {
             Log.Info("Headset is initializing");
             Chroma.InitInstance();
+            _connected = Chroma.Instance.Query(Razer.Devices.Kraken71).Connected;
         }
 
         /// <summary>
         /// Gets the application-wide instance of the <see cref="IHeadset" /> interface.
         /// </summary>
         public static IHeadset Instance => _instance ?? (_instance = new Headset());
+
+        /// <summary>
+        /// Gets a value indicating whether this device type is connected.
+        /// </summary>
+        public bool Connected
+        {
+            get { return _connected; }
+        }
 
         /// <summary>
         /// Sets the color of all components on this device.

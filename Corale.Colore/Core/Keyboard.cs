@@ -52,6 +52,11 @@ namespace Corale.Colore.Core
         private static readonly object InitLock = new object();
 
         /// <summary>
+        /// Holds the value for whether this device type is connected.
+        /// </summary>
+        private static bool _connected;
+
+        /// <summary>
         /// Holds the application-wide instance of the <see cref="Keyboard" /> class.
         /// </summary>
         private static IKeyboard _instance;
@@ -70,6 +75,7 @@ namespace Corale.Colore.Core
 
             Chroma.InitInstance();
 
+            _connected = Chroma.Instance.Query(Razer.Devices.Blackwidow).Connected || Chroma.Instance.Query(Razer.Devices.BlackwidowTe).Connected || Chroma.Instance.Query(Razer.Devices.Deathstalker).Connected || Chroma.Instance.Query(Razer.Devices.OverwatchKeyboard).Connected;
             CurrentEffectId = Guid.Empty;
 
             // We keep a local copy of a grid to speed up grid operations
@@ -95,6 +101,14 @@ namespace Corale.Colore.Core
                     return _instance ?? (_instance = new Keyboard());
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether this device type is connected.
+        /// </summary>
+        public bool Connected
+        {
+            get { return _connected; }
         }
 
         /// <summary>

@@ -37,6 +37,13 @@ namespace Corale.Colore.Core
     public interface IKeyboard : IDevice
     {
         /// <summary>
+        /// Gets a value indicating whether this device
+        /// is connected or not.
+        /// </summary>
+        [PublicAPI]
+        bool Connected { get; }
+
+        /// <summary>
         /// Gets or sets the <see cref="Color" /> for a specific <see cref="Key" /> on the keyboard.
         /// </summary>
         /// <param name="key">The key to access.</param>
