@@ -28,6 +28,7 @@ namespace Corale.Colore.Core
     using System;
 
     using Corale.Colore.Razer.Headset.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Class for interacting with Chroma Headsets.

@@ -29,6 +29,7 @@ namespace Corale.Colore.Core
 
     using Corale.Colore.Razer.Keypad;
     using Corale.Colore.Razer.Keypad.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Class for interacting with a Chroma keypad.
@@ -104,7 +105,7 @@ namespace Corale.Colore.Core
         /// <returns><c>true</c> if the position has a color set that is not black, otherwise <c>false</c>.</returns>
         public bool IsSet(int row, int column)
         {
-            return this[row, column] != Color.Black;
+            return this[row, column] != Color.black;
         }
 
         /// <summary>
@@ -153,7 +154,7 @@ namespace Corale.Colore.Core
         /// </summary>
         public void SetBreathing()
         {
-            SetBreathing(new Breathing(BreathingType.Random, Color.Black, Color.Black));
+            SetBreathing(new Breathing(BreathingType.Random, Color.black, Color.black));
         }
 
         /// <summary>

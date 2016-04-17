@@ -28,6 +28,7 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer.Keypad;
     using Corale.Colore.Razer.Keypad.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Interface for keypad functions.

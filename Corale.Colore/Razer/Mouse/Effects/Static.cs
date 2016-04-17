@@ -29,6 +29,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Describes the static effect type.

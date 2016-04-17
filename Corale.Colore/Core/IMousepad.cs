@@ -27,6 +27,7 @@ namespace Corale.Colore.Core
 {
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer.Mousepad.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Interface for mouse pad functionality.

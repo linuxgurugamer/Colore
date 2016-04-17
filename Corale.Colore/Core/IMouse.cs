@@ -28,6 +28,7 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer.Mouse;
     using Corale.Colore.Razer.Mouse.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Interface for mouse functionality.

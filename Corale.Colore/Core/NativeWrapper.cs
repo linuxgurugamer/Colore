@@ -31,6 +31,7 @@ namespace Corale.Colore.Core
 
     using Corale.Colore.Razer;
     using UnityEngine;
+
     /// <summary>
     /// Helper class to more easily make calls to native Chroma SDK functions.
     /// </summary>

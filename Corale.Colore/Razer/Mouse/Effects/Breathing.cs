@@ -29,6 +29,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Describes the breathing effect type.
@@ -81,7 +82,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
         /// </summary>
         /// <param name="led">The LED on which to apply the effect.</param>
         public Breathing(Led led)
-            : this(led, BreathingType.Random, Color.Black, Color.Black)
+            : this(led, BreathingType.Random, Color.black, Color.black)
         {
         }
 
@@ -92,7 +93,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
         /// <param name="led">The LED on which to apply the effect.</param>
         /// <param name="first">The color to breathe to.</param>
         public Breathing(Led led, Color first)
-            : this(led, BreathingType.One, first, Color.Black)
+            : this(led, BreathingType.One, first, Color.black)
         {
         }
 
@@ -126,7 +127,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
         /// </summary>
         /// <param name="first">The <see cref="Color" /> to breathe to.</param>
         public Breathing(Color first)
-            : this(BreathingType.One, first, Color.Black)
+            : this(BreathingType.One, first, Color.black)
         {
         }
 

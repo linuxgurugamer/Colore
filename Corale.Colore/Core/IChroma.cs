@@ -31,6 +31,7 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Events;
     using Corale.Colore.Razer;
+    using UnityEngine;
 
     /// <summary>
     /// Interface for basic Chroma functionality.

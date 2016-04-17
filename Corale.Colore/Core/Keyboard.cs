@@ -32,6 +32,7 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer.Keyboard;
     using Corale.Colore.Razer.Keyboard.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Class for interacting with a Chroma keyboard.
@@ -166,7 +167,7 @@ namespace Corale.Colore.Core
         /// <returns><c>true</c> if the key has a color set, otherwise <c>false</c>.</returns>
         public bool IsSet(Key key)
         {
-            return _grid[key] != Color.Black;
+            return _grid[key] != Color.black;
         }
 
         /// <summary>
@@ -205,7 +206,7 @@ namespace Corale.Colore.Core
         /// </summary>
         public void SetBreathing()
         {
-            SetBreathing(new Breathing(BreathingType.Random, Color.Black, Color.Black));
+            SetBreathing(new Breathing(BreathingType.Random, Color.black, Color.black));
         }
 
         /// <summary>

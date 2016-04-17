@@ -28,6 +28,7 @@ namespace Corale.Colore.Core
     using System;
 
     using Corale.Colore.Razer.Mousepad.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Class for interacting with a Chroma mouse pad.
@@ -136,7 +137,7 @@ namespace Corale.Colore.Core
         /// </summary>
         public void SetBreathing()
         {
-            SetBreathing(new Breathing(BreathingType.Random, Color.Black, Color.Black));
+            SetBreathing(new Breathing(BreathingType.Random, Color.black, Color.black));
         }
 
         /// <summary>

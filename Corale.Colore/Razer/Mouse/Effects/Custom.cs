@@ -31,6 +31,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Custom effect for mouse LEDs.
@@ -169,7 +170,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
         [PublicAPI]
         public static Custom Create()
         {
-            return new Custom(Color.Black);
+            return new Custom(Color.black);
         }
 
         /// <summary>
@@ -184,12 +185,12 @@ namespace Corale.Colore.Razer.Mouse.Effects
         }
 
         /// <summary>
-        /// Clears the colors in this <see cref="Custom" /> struct (sets to <see cref="Color.Black" />).
+        /// Clears the colors in this <see cref="Custom" /> struct (sets to <see cref="Color.black" />).
         /// </summary>
         [PublicAPI]
         public void Clear()
         {
-            Set(Color.Black);
+            Set(Color.black);
         }
 
         /// <summary>
