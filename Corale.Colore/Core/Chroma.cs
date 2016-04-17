@@ -35,6 +35,7 @@ namespace Corale.Colore.Core
 
     using Microsoft.Win32;
     using UnityEngine;
+
     /// <summary>
     /// Main class for interacting with the Chroma SDK.
     /// </summary>
@@ -214,6 +215,7 @@ namespace Corale.Colore.Core
                 // If we can't access the registry, best to just assume
                 // it is enabled.
                 Debug.LogWarning("System raised SecurityException during read of SDK enable flag in registry.");
+                Debug.LogException(ex);
                 regEnabled = true;
             }
             catch (UnauthorizedAccessException ex)
@@ -221,6 +223,7 @@ namespace Corale.Colore.Core
                 // If we can't access the registry, best to just assume
                 // it is enabled.
                 Debug.LogWarning("Not authorized to read registry for SDK enable flag.");
+                Debug.LogException(ex);
                 regEnabled = true;
             }
 
@@ -369,7 +372,6 @@ namespace Corale.Colore.Core
         /// </remarks>
         public void Register(IntPtr handle)
         {
-
             if (_registered)
             {
                 NativeWrapper.UnregisterEventNotification();

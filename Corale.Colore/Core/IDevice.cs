@@ -28,6 +28,7 @@ namespace Corale.Colore.Core
     using System;
 
     using Corale.Colore.Annotations;
+    using UnityEngine;
 
     /// <summary>
     /// Interface for functionality common with all devices.

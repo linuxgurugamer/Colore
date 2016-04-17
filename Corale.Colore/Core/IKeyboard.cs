@@ -30,6 +30,7 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer.Keyboard;
     using Corale.Colore.Razer.Keyboard.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Interface for keyboard functionality.

@@ -31,6 +31,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Custom grid effect for mouse LEDs.
@@ -166,7 +167,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
         [PublicAPI]
         public static CustomGrid Create()
         {
-            return new CustomGrid(Color.Black);
+            return new CustomGrid(Color.black);
         }
 
         /// <summary>
@@ -181,12 +182,12 @@ namespace Corale.Colore.Razer.Mouse.Effects
         }
 
         /// <summary>
-        /// Clears the colors from the grid, setting them to <see cref="Color.Black" />.
+        /// Clears the colors from the grid, setting them to <see cref="Color.black" />.
         /// </summary>
         [PublicAPI]
         public void Clear()
         {
-            Set(Color.Black);
+            Set(Color.black);
         }
 
         /// <summary>

@@ -29,6 +29,7 @@ namespace Corale.Colore.Razer.Mousepad.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Static effect for mouse pad.

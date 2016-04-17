@@ -30,6 +30,7 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer.Mouse;
     using Corale.Colore.Razer.Mouse.Effects;
+    using UnityEngine;
 
     /// <summary>
     /// Class for interacting with a Chroma mouse.

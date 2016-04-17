@@ -94,12 +94,14 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\Games\SteamApps\steamapps\common\Kerbal Space Program\KSP_x64_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColoreException.cs" />
     <Compile Include="Core\Chroma.cs" />
-    <Compile Include="Core\Color.cs" />
-    <Compile Include="Core\Color.Defines.cs" />
+    <Compile Include="Core\ColorHelper.cs" />
     <Compile Include="Core\Device.cs" />
     <Compile Include="EnvironmentHelper.cs" />
     <Compile Include="Core\GenericDevice.cs" />

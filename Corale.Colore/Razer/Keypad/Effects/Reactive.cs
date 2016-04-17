@@ -29,6 +29,7 @@ namespace Corale.Colore.Razer.Keypad.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Reactive effect.

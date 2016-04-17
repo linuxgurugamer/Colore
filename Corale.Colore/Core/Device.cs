@@ -26,6 +26,7 @@
 namespace Corale.Colore.Core
 {
     using System;
+    using UnityEngine;
 
     /// <summary>
     /// Base class for devices, containing code common between all devices.
@@ -42,7 +43,7 @@ namespace Corale.Colore.Core
         /// </summary>
         public void Clear()
         {
-            SetAll(Color.Black);
+            SetAll(Color.black);
         }
 
         /// <summary>

@@ -31,6 +31,7 @@ namespace Corale.Colore.Razer.Keyboard.Effects
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Core;
+    using UnityEngine;
 
     /// <summary>
     /// Describes a custom grid effect for every key.
@@ -181,7 +182,7 @@ namespace Corale.Colore.Razer.Keyboard.Effects
         /// filled with the color black.</returns>
         public static Custom Create()
         {
-            return new Custom(Color.Black);
+            return new Custom(Color.black);
         }
 
         /// <summary>
@@ -197,11 +198,11 @@ namespace Corale.Colore.Razer.Keyboard.Effects
         }
 
         /// <summary>
-        /// Clears the colors from the grid, setting them to <see cref="Color.Black" />.
+        /// Clears the colors from the grid, setting them to <see cref="Color.black" />.
         /// </summary>
         public void Clear()
         {
-            Set(Color.Black);
+            Set(Color.black);
         }
 
         /// <summary>

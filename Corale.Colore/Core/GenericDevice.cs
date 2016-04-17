@@ -32,6 +32,7 @@ namespace Corale.Colore.Core
 
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer;
+    using UnityEngine;
 
     /// <summary>
     /// A generic device.
