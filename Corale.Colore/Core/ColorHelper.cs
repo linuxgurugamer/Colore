@@ -33,16 +33,16 @@ namespace Corale.Colore.Core
         /// <summary>
         /// Fetches a color from the given uint color code.
         /// </summary>
-        /// <param name="colorCode">32bit ARGB color uint representation (0xAARRGGBB)</param>
+        /// <param name="colorCode">32bit ARGB color uint representation (0xAABBGGRR)</param>
         /// <returns>the corresponding unity color object</returns>
         public static Color UintToColor(uint colorCode)
         {
             Color32 myReturn = default(Color32);
 
             myReturn.a = (byte)((colorCode >> 24) & 0xFF);
-            myReturn.r = (byte)((colorCode >> 16) & 0xFF);
+            myReturn.b = (byte)((colorCode >> 16) & 0xFF);
             myReturn.g = (byte)((colorCode >> 8) & 0xFF);
-            myReturn.b = (byte)((colorCode >> 0) & 0xFF);
+            myReturn.r = (byte)((colorCode >> 0) & 0xFF);
 
             return myReturn;
         }
@@ -51,11 +51,11 @@ namespace Corale.Colore.Core
         /// Fetches the uint color code from the given unity color.
         /// </summary>
         /// <param name="color">The color to translate into a uint code</param>
-        /// <returns>32bit ARGB uint representation of the color (0xAARRGGBB)</returns>
+        /// <returns>32bit ARGB uint representation of the color (0xAABBGGRR)</returns>
         public static uint ColorToUint(Color color)
         {
             Color32 c = color;
-            uint myReturn = ((uint)(c.a << 24)) | ((uint)(c.r << 16)) | ((uint)(c.g << 8)) | ((uint)c.b);
+            uint myReturn = ((uint)(c.a << 24)) | ((uint)(c.b << 16)) | ((uint)(c.g << 8)) | ((uint)c.r);
             return myReturn;
         }
     }
