@@ -33,18 +33,11 @@ namespace Corale.Colore.Core
     using Corale.Colore.Annotations;
     using Corale.Colore.Razer;
 
-    using log4net;
-
     /// <summary>
     /// A generic device.
     /// </summary>
     public sealed class GenericDevice : Device, IGenericDevice
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(GenericDevice));
-
         /// <summary>
         /// Holds generated instances of devices.
         /// </summary>
@@ -56,8 +49,6 @@ namespace Corale.Colore.Core
         /// <param name="deviceId">The <see cref="Guid" /> of the device.</param>
         private GenericDevice(Guid deviceId)
         {
-            Log.InfoFormat("New generic device initializing: {0}", deviceId);
-
             if (!Devices.IsValidId(deviceId))
                 throw new UnsupportedDeviceException(deviceId);
 

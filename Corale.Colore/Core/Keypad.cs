@@ -30,18 +30,11 @@ namespace Corale.Colore.Core
     using Corale.Colore.Razer.Keypad;
     using Corale.Colore.Razer.Keypad.Effects;
 
-    using log4net;
-
     /// <summary>
     /// Class for interacting with a Chroma keypad.
     /// </summary>
     public sealed class Keypad : Device, IKeypad
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Keypad));
-
         /// <summary>
         /// Lock object for thread-safe init.
         /// </summary>
@@ -63,7 +56,6 @@ namespace Corale.Colore.Core
         /// </summary>
         private Keypad()
         {
-            Log.Debug("Keypad is initializing");
             Chroma.InitInstance();
 
             _custom = Custom.Create();

@@ -33,19 +33,12 @@ namespace Corale.Colore.Core
     using Corale.Colore.Razer.Keyboard;
     using Corale.Colore.Razer.Keyboard.Effects;
 
-    using log4net;
-
     /// <summary>
     /// Class for interacting with a Chroma keyboard.
     /// </summary>
     [PublicAPI]
     public sealed class Keyboard : Device, IKeyboard
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Keyboard));
-
         /// <summary>
         /// Lock object for thread-safe initialization.
         /// </summary>
@@ -66,19 +59,15 @@ namespace Corale.Colore.Core
         /// </summary>
         private Keyboard()
         {
-            Log.Info("Keyboard initializing...");
-
             Chroma.InitInstance();
 
             CurrentEffectId = Guid.Empty;
 
             // We keep a local copy of a grid to speed up grid operations
-            Log.Debug("Creating grid array");
             var gridArray = new Color[Constants.MaxRows][];
             for (var i = 0; i < Constants.MaxRows; i++)
                 gridArray[i] = new Color[Constants.MaxColumns];
 
-            Log.Debug("Initializing private copy of Custom");
             _grid = new Custom(gridArray);
         }
 

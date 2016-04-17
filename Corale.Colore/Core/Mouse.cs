@@ -31,19 +31,12 @@ namespace Corale.Colore.Core
     using Corale.Colore.Razer.Mouse;
     using Corale.Colore.Razer.Mouse.Effects;
 
-    using log4net;
-
     /// <summary>
     /// Class for interacting with a Chroma mouse.
     /// </summary>
     [PublicAPI]
     public sealed class Mouse : Device, IMouse
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Mouse));
-
         /// <summary>
         /// Lock object for thread-safe init.
         /// </summary>
@@ -69,7 +62,6 @@ namespace Corale.Colore.Core
         /// </summary>
         private Mouse()
         {
-            Log.Info("Mouse is initializing");
             Chroma.InitInstance();
             _custom = Custom.Create();
             _customGrid = CustomGrid.Create();

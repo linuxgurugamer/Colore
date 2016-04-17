@@ -30,19 +30,12 @@ namespace Corale.Colore.Core
     using System.Security;
 
     using Corale.Colore.Razer;
-
-    using log4net;
-
+    using UnityEngine;
     /// <summary>
     /// Helper class to more easily make calls to native Chroma SDK functions.
     /// </summary>
     internal static class NativeWrapper
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(NativeWrapper));
-
         /// <summary>
         /// Creates an effect for a device.
         /// </summary>
@@ -180,7 +173,7 @@ namespace Corale.Colore.Core
                 return;
 
             if (result == Result.RzResourceDisabled || result == Result.RzAccessDenied)
-                Log.WarnFormat("Ambiguous {0} error thrown from call to native function SetEffect.", result);
+                Debug.LogWarning("Ambiguous {0} error thrown from call to native function SetEffect.");
             else
                 throw new NativeCallException("SetEffect", result);
         }

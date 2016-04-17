@@ -30,14 +30,11 @@ namespace Corale.Colore.Core
 
     using Corale.Colore.Annotations;
 
-    using SystemColor = System.Drawing.Color;
-    using WpfColor = System.Windows.Media.Color;
-
     /// <summary>
     /// Represents an RGB color.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Size = sizeof(uint))]
-    public partial struct Color : IEquatable<Color>, IEquatable<uint>, IEquatable<SystemColor>, IEquatable<WpfColor>
+    public partial struct Color : IEquatable<Color>, IEquatable<uint>
     {
         /// <summary>
         /// Internal color value.

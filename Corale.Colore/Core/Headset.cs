@@ -29,18 +29,11 @@ namespace Corale.Colore.Core
 
     using Corale.Colore.Razer.Headset.Effects;
 
-    using log4net;
-
     /// <summary>
     /// Class for interacting with Chroma Headsets.
     /// </summary>
     public sealed class Headset : Device, IHeadset
     {
-        /// <summary>
-        /// Loggers instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Headset));
-
         /// <summary>
         /// Holds the application-wide instance of the <see cref="IHeadset" /> interface.
         /// </summary>
@@ -51,7 +44,6 @@ namespace Corale.Colore.Core
         /// </summary>
         private Headset()
         {
-            Log.Info("Headset is initializing");
             Chroma.InitInstance();
         }
 

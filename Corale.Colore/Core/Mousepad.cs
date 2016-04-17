@@ -29,18 +29,11 @@ namespace Corale.Colore.Core
 
     using Corale.Colore.Razer.Mousepad.Effects;
 
-    using log4net;
-
     /// <summary>
     /// Class for interacting with a Chroma mouse pad.
     /// </summary>
     public sealed class Mousepad : Device, IMousepad
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Mousepad));
-
         /// <summary>
         /// Lock object for thread-safe init.
         /// </summary>
@@ -61,7 +54,6 @@ namespace Corale.Colore.Core
         /// </summary>
         private Mousepad()
         {
-            Log.Debug("Mousepad is initializing.");
             Chroma.InitInstance();
             _custom = Custom.Create();
         }

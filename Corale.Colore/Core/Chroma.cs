@@ -33,20 +33,13 @@ namespace Corale.Colore.Core
     using Corale.Colore.Events;
     using Corale.Colore.Razer;
 
-    using log4net;
-
     using Microsoft.Win32;
-
+    using UnityEngine;
     /// <summary>
     /// Main class for interacting with the Chroma SDK.
     /// </summary>
     public sealed class Chroma : IChroma
     {
-        /// <summary>
-        /// Logger instance for this class.
-        /// </summary>
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Chroma));
-
         /// <summary>
         /// Mutex lock for thread-safe init calls.
         /// </summary>
@@ -208,9 +201,8 @@ namespace Corale.Colore.Core
                         else
                         {
                             regEnabled = true;
-                            Log.Warn(
+                            Debug.LogWarning(
                                 "Chroma SDK has changed registry setting format. Please update Colore to latest version.");
-                            Log.DebugFormat("New Enabled type: {0}", value.GetType());
                         }
                     }
                     else
@@ -221,14 +213,14 @@ namespace Corale.Colore.Core
             {
                 // If we can't access the registry, best to just assume
                 // it is enabled.
-                Log.Warn("System raised SecurityException during read of SDK enable flag in registry.", ex);
+                Debug.LogWarning("System raised SecurityException during read of SDK enable flag in registry.");
                 regEnabled = true;
             }
             catch (UnauthorizedAccessException ex)
             {
                 // If we can't access the registry, best to just assume
                 // it is enabled.
-                Log.Warn("Not authorized to read registry for SDK enable flag.", ex);
+                Debug.LogWarning("Not authorized to read registry for SDK enable flag.");
                 regEnabled = true;
             }
 
@@ -249,11 +241,11 @@ namespace Corale.Colore.Core
             if (Initialized)
                 return;
 
-            Log.Info("Chroma is initializing.");
-            Log.Debug("Calling SDK Init function");
+            Debug.Log("Chroma is initializing.");
+            Debug.Log("Calling SDK Init function");
             NativeWrapper.Init();
             Initialized = true;
-            Log.Debug("Resetting _registeredHandle");
+            Debug.Log("Resetting _registeredHandle");
             _registeredHandle = IntPtr.Zero;
         }
 
@@ -297,7 +289,6 @@ namespace Corale.Colore.Core
             if (!Devices.IsValidId(deviceId))
                 throw new ArgumentException("The specified ID does not match any of the valid IDs.", nameof(deviceId));
 
-            Log.DebugFormat("Information for {0} requested", deviceId);
             return NativeWrapper.QueryDevice(deviceId);
         }
 
@@ -312,7 +303,6 @@ namespace Corale.Colore.Core
         /// <returns>An instance of <see cref="IGenericDevice" />.</returns>
         public IGenericDevice Get(Guid deviceId)
         {
-            Log.DebugFormat("Device {0} requested", deviceId);
             return GenericDevice.Get(deviceId);
         }
 
@@ -379,11 +369,9 @@ namespace Corale.Colore.Core
         /// </remarks>
         public void Register(IntPtr handle)
         {
-            Log.Debug("Registering for Chroma event notifications");
 
             if (_registered)
             {
-                Log.Debug("Already registered, unregistering before continuing with registration");
                 NativeWrapper.UnregisterEventNotification();
             }
 
@@ -399,8 +387,6 @@ namespace Corale.Colore.Core
         {
             if (!_registered)
                 return;
-
-            Log.Debug("Unregistering from Chroma event notifications");
 
             NativeWrapper.UnregisterEventNotification();
             _registered = false;
