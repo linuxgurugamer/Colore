@@ -302,7 +302,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
                 _columns = new uint[Constants.MaxColumns];
 
                 for (var col = 0; col < Constants.MaxColumns; col++)
-					_columns[col] = ColorHelper.colorToUint(colors[col]);
+                    _columns[col] = ColorHelper.ColorToUint(colors[col]);
             }
 
             /// <summary>
@@ -315,7 +315,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
                 _columns = new uint[Constants.MaxColumns];
 
                 for (var col = 0; col < Constants.MaxColumns; col++)
-					_columns[col] = ColorHelper.colorToUint(color);
+                    _columns[col] = ColorHelper.ColorToUint(color);
             }
 
             /// <summary>
@@ -335,7 +335,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
                             "Attempted to access a column that does not exist.");
                     }
 
-					return ColorHelper.uintToColor(_columns[column]);
+                    return ColorHelper.UintToColor(_columns[column]);
                 }
 
                 set
@@ -348,7 +348,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
                             "Attempted to access a column that does not exist.");
                     }
 
-					_columns[column] = ColorHelper.colorToUint(value);
+                    _columns[column] = ColorHelper.ColorToUint(value);
                 }
             }
 
@@ -381,7 +381,7 @@ namespace Corale.Colore.Razer.Mouse.Effects
             public void Set(Color color)
             {
                 for (var column = 0; column < Constants.MaxColumns; column++)
-					_columns[column] = ColorHelper.colorToUint(color);
+                    _columns[column] = ColorHelper.ColorToUint(color);
             }
         }
     }
