@@ -31,9 +31,9 @@ namespace Corale.Colore.Tester.ViewModels
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
-    using System.Windows.Media;
     using Classes;
     using Razer.Mousepad.Effects;
+    using UnityEngine;
 
     public class MousepadViewModel : INotifyPropertyChanged
     {
@@ -42,17 +42,17 @@ namespace Corale.Colore.Tester.ViewModels
         public MousepadViewModel()
         {
             SelectedWaveDirection = Direction.LeftToRight;
-            ColorOne.Color = Core.Color.Red;
-            ColorTwo.Color = Core.Color.Blue;
+            ColorOne = Color.red;
+            ColorTwo = Color.blue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int Index { get; set; }
 
-        public SolidColorBrush ColorOne { get; set; } = new SolidColorBrush();
+        public Color ColorOne { get; set; } = default(Color);
 
-        public SolidColorBrush ColorTwo { get; set; } = new SolidColorBrush();
+        public Color ColorTwo { get; set; } = default(Color);
 
         public Direction SelectedWaveDirection
         {
@@ -68,16 +68,16 @@ namespace Corale.Colore.Tester.ViewModels
             }
         }
 
-        public ICommand AllCommand => new DelegateCommand(() => Core.Mousepad.Instance.SetAll(ColorOne.Color));
+        public ICommand AllCommand => new DelegateCommand(() => Core.Mousepad.Instance.SetAll(ColorOne));
 
         public ICommand BreathingCommand
-            => new DelegateCommand(() => Core.Mousepad.Instance.SetBreathing(ColorOne.Color, ColorTwo.Color));
+            => new DelegateCommand(() => Core.Mousepad.Instance.SetBreathing(ColorOne, ColorTwo));
 
         public ICommand WaveCommand
             => new DelegateCommand(SetWaveEffect);
 
         public ICommand StaticCommand
-            => new DelegateCommand(() => Core.Mousepad.Instance.SetStatic(ColorOne.Color));
+            => new DelegateCommand(() => Core.Mousepad.Instance.SetStatic(ColorOne));
 
         public ICommand IndexerCommand
             => new DelegateCommand(SetIndexerEffect);
@@ -111,7 +111,7 @@ namespace Corale.Colore.Tester.ViewModels
         {
             try
             {
-                Core.Mousepad.Instance[Index] = ColorOne.Color;
+                Core.Mousepad.Instance[Index] = ColorOne;
             }
             catch (Exception ex)
             {

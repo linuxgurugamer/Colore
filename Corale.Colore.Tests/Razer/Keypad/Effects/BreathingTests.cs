@@ -27,6 +27,7 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
     using Corale.Colore.Razer.Keypad.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class BreathingTests
@@ -35,8 +36,8 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
         public void ShouldConstructWithCorrectTypeAndColors()
         {
             const BreathingType Type = BreathingType.Two;
-            var first = Color.Red;
-            var second = Color.Blue;
+            var first = Color.red;
+            var second = Color.blue;
 
             var effect = new Breathing(Type, first, second);
 
@@ -48,13 +49,13 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
         [Test]
         public void ShouldConstructWithRandomType()
         {
-            Assert.AreEqual(BreathingType.Random, new Breathing(BreathingType.Random, Color.Black, Color.Black).Type);
+            Assert.AreEqual(BreathingType.Random, new Breathing(BreathingType.Random, Color.black, Color.black).Type);
         }
 
         [Test]
         public void ShouldConstructWithCorrectTypeOnTwoColors()
         {
-            Assert.AreEqual(BreathingType.Two, new Breathing(Color.Red, Color.Blue).Type);
+            Assert.AreEqual(BreathingType.Two, new Breathing(Color.red, Color.blue).Type);
         }
     }
 }

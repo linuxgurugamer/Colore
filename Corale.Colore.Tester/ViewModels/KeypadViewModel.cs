@@ -31,10 +31,10 @@ namespace Corale.Colore.Tester.ViewModels
     using System.Linq;
     using System.Windows;
     using System.Windows.Input;
-    using System.Windows.Media;
     using Classes;
     using Razer.Keypad.Effects;
     using Razer.Mouse;
+    using UnityEngine;
     using Duration = Razer.Keypad.Effects.Duration;
     using Key = Razer.Keyboard.Key;
 
@@ -49,8 +49,8 @@ namespace Corale.Colore.Tester.ViewModels
             SelectedKey = Key.A;
             SelectedReactiveDuration = Duration.Long;
             SelectedWaveDirection = Direction.LeftToRight;
-            ColorOne.Color = Core.Color.Red;
-            ColorTwo.Color = Core.Color.Blue;
+            ColorOne = Color.red;
+            ColorTwo = Color.blue;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -59,9 +59,9 @@ namespace Corale.Colore.Tester.ViewModels
 
         public int Row { get; set; }
 
-        public SolidColorBrush ColorOne { get; set; } = new SolidColorBrush();
+        public Color ColorOne { get; set; } = default(Color);
 
-        public SolidColorBrush ColorTwo { get; set; } = new SolidColorBrush();
+        public Color ColorTwo { get; set; } = default(Color);
 
         public Led Keys { get; set; }
 
@@ -107,10 +107,10 @@ namespace Corale.Colore.Tester.ViewModels
             }
         }
 
-        public ICommand AllCommand => new DelegateCommand(() => Core.Keypad.Instance.SetAll(ColorOne.Color));
+        public ICommand AllCommand => new DelegateCommand(() => Core.Keypad.Instance.SetAll(ColorOne));
 
         public ICommand BreathingCommand
-            => new DelegateCommand(() => Core.Keypad.Instance.SetBreathing(ColorOne.Color, ColorTwo.Color));
+            => new DelegateCommand(() => Core.Keypad.Instance.SetBreathing(ColorOne, ColorTwo));
 
         public ICommand ReactiveCommand
             =>
@@ -120,7 +120,7 @@ namespace Corale.Colore.Tester.ViewModels
             => new DelegateCommand(SetWaveEffect);
 
         public ICommand StaticCommand
-            => new DelegateCommand(() => Core.Keypad.Instance.SetStatic(new Static(ColorOne.Color)));
+            => new DelegateCommand(() => Core.Keypad.Instance.SetStatic(new Static(ColorOne)));
 
         public ICommand IndexerCommand
             => new DelegateCommand(SetIndexerEffect);
@@ -141,7 +141,7 @@ namespace Corale.Colore.Tester.ViewModels
         {
             try
             {
-                Core.Keypad.Instance.SetReactive(ColorOne.Color, SelectedReactiveDuration);
+                Core.Keypad.Instance.SetReactive(ColorOne, SelectedReactiveDuration);
             }
             catch (Exception ex)
             {
@@ -165,7 +165,7 @@ namespace Corale.Colore.Tester.ViewModels
         {
             try
             {
-                Core.Keypad.Instance[Row, Col] = ColorOne.Color;
+                Core.Keypad.Instance[Row, Col] = ColorOne;
             }
             catch (Exception ex)
             {

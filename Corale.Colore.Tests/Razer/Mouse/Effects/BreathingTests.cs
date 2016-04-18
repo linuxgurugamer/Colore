@@ -28,6 +28,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
     using Colore.Razer.Mouse.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class BreathingTests
@@ -37,8 +38,8 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         {
             const Led Led = Led.Logo;
             const BreathingType Type = BreathingType.Two;
-            var first = Color.Red;
-            var second = Color.Blue;
+            var first = Color.red;
+            var second = Color.blue;
 
             var effect = new Breathing(Led, Type, first, second);
 
@@ -51,13 +52,13 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructWithTwoColorTypeWhenTwoColorConstructor()
         {
-            Assert.AreEqual(BreathingType.Two, new Breathing(Led.All, Color.Red, Color.Blue).Type);
+            Assert.AreEqual(BreathingType.Two, new Breathing(Led.All, Color.red, Color.blue).Type);
         }
 
         [Test]
         public void ShouldConstructWithOneColorTypeWhenOneColorConstructor()
         {
-            Assert.AreEqual(BreathingType.One, new Breathing(Led.All, Color.Red).Type);
+            Assert.AreEqual(BreathingType.One, new Breathing(Led.All, Color.red).Type);
         }
 
         [Test]
@@ -69,13 +70,13 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructWithLedAllWhenNoLedGiven()
         {
-            Assert.AreEqual(Led.All, new Breathing(BreathingType.Two, Color.Red, Color.Blue).Led);
+            Assert.AreEqual(Led.All, new Breathing(BreathingType.Two, Color.red, Color.blue).Led);
         }
 
         [Test]
         public void ShouldConstructWithLedAllTwoTypeWhenGivenTwoColors()
         {
-            var effect = new Breathing(Color.Red, Color.Blue);
+            var effect = new Breathing(Color.red, Color.blue);
 
             Assert.AreEqual(Led.All, effect.Led);
             Assert.AreEqual(BreathingType.Two, effect.Type);
@@ -84,7 +85,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructWithLedAllOneTypeWhenGivenSingleColor()
         {
-            var effect = new Breathing(Color.Red);
+            var effect = new Breathing(Color.red);
 
             Assert.AreEqual(Led.All, effect.Led);
             Assert.AreEqual(BreathingType.One, effect.Type);

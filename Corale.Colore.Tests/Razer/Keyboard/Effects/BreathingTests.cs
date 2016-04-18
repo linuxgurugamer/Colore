@@ -29,6 +29,7 @@ namespace Corale.Colore.Tests.Razer.Keyboard.Effects
     using Corale.Colore.Razer.Keyboard.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class BreathingTests
@@ -36,13 +37,13 @@ namespace Corale.Colore.Tests.Razer.Keyboard.Effects
         [Test]
         public void ShouldConstructWithCorrectFirstColor()
         {
-            Assert.That(new Breathing(Color.Red, Color.Blue).First, Is.EqualTo(Color.Red));
+            Assert.That(new Breathing(Color.red, Color.blue).First, Is.EqualTo(Color.red));
         }
 
         [Test]
         public void ShouldConstructWithCorrectSecondColor()
         {
-            Assert.That(new Breathing(Color.Orange, Color.Purple).Second, Is.EqualTo(Color.Purple));
+            Assert.That(new Breathing(Color.magenta, Color.cyan).Second, Is.EqualTo(Color.cyan));
         }
     }
 }

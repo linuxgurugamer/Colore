@@ -27,6 +27,7 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
     using Corale.Colore.Razer.Keypad.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class ReactiveTests
@@ -34,7 +35,7 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
         [Test]
         public void ShouldConstructWithCorrectColorAndDuration()
         {
-            var color = Color.Red;
+            var color = Color.red;
             const Duration Duration = Duration.Medium;
 
             var effect = new Reactive(color, Duration);

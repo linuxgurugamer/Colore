@@ -29,6 +29,7 @@ namespace Corale.Colore.Tests.Razer.Keyboard.Effects
     using Corale.Colore.Razer.Keyboard.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class ReactiveTests
@@ -36,13 +37,13 @@ namespace Corale.Colore.Tests.Razer.Keyboard.Effects
         [Test]
         public void ShouldConstructWithCorrectColor()
         {
-            Assert.That(new Reactive(Color.Red, Duration.Short).Color, Is.EqualTo(Color.Red));
+            Assert.That(new Reactive(Color.red, Duration.Short).Color, Is.EqualTo(Color.red));
         }
 
         [Test]
         public void ShouldConstructWithCorrectDuration()
         {
-            Assert.That(new Reactive(Color.Black, Duration.Medium).Duration, Is.EqualTo(Duration.Medium));
+            Assert.That(new Reactive(Color.black, Duration.Medium).Duration, Is.EqualTo(Duration.Medium));
         }
     }
 }

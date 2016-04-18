@@ -30,6 +30,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
     using Corale.Colore.Razer.Mouse.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class CustomGridTests
@@ -63,9 +64,9 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
             for (var row = 0; row < Constants.MaxRows; row++)
                 colors[row] = new Color[Constants.MaxColumns];
 
-            colors[1][2] = Color.Red;
-            colors[0][4] = Color.Blue;
-            colors[3][1] = Color.Green;
+            colors[1][2] = Color.red;
+            colors[0][4] = Color.blue;
+            colors[3][1] = Color.green;
 
             var effect = new CustomGrid(colors);
 
@@ -79,12 +80,12 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructFromColor()
         {
-            var effect = new CustomGrid(Color.Red);
+            var effect = new CustomGrid(Color.red);
 
             for (var row = 0; row < Constants.MaxRows; row++)
             {
                 for (var column = 0; column < Constants.MaxColumns; column++)
-                    Assert.AreEqual(Color.Red, effect[row, column]);
+                    Assert.AreEqual(Color.red, effect[row, column]);
             }
         }
 
@@ -135,7 +136,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
             var effect = CustomGrid.Create();
 
             Assert.That(
-                () => effect[-1, 0] = Color.Red,
+                () => effect[-1, 0] = Color.red,
                 Throws.InstanceOf<ArgumentOutOfRangeException>()
                     .With.Property("ParamName")
                     .EqualTo("row")
@@ -143,7 +144,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
                     .EqualTo(-1));
 
             Assert.That(
-                () => effect[Constants.MaxRows, 0] = Color.Red,
+                () => effect[Constants.MaxRows, 0] = Color.red,
                 Throws.InstanceOf<ArgumentOutOfRangeException>()
                     .With.Property("ParamName")
                     .EqualTo("row")
@@ -151,7 +152,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
                     .EqualTo(Constants.MaxRows));
 
             Assert.That(
-                () => effect[0, -1] = Color.Red,
+                () => effect[0, -1] = Color.red,
                 Throws.InstanceOf<ArgumentOutOfRangeException>()
                     .With.Property("ParamName")
                     .EqualTo("column")
@@ -159,7 +160,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
                     .EqualTo(-1));
 
             Assert.That(
-                () => effect[0, Constants.MaxColumns] = Color.Red,
+                () => effect[0, Constants.MaxColumns] = Color.red,
                 Throws.InstanceOf<ArgumentOutOfRangeException>()
                     .With.Property("ParamName")
                     .EqualTo("column")
@@ -170,31 +171,31 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldGetCorrectColorWithIndexer()
         {
-            Assert.AreEqual(Color.Red, new CustomGrid(Color.Red)[3, 3]);
+            Assert.AreEqual(Color.red, new CustomGrid(Color.red)[3, 3]);
         }
 
         [Test]
         public void ShouldSetCorrectColorWithIndexer()
         {
             var effect = CustomGrid.Create();
-            effect[5, 5] = Color.Red;
+            effect[5, 5] = Color.red;
 
-            Assert.AreEqual(Color.Red, effect[5, 5]);
+            Assert.AreEqual(Color.red, effect[5, 5]);
         }
 
         [Test]
         public void ShouldGetCorrectColorWithLedIndexer()
         {
-            Assert.AreEqual(Color.Red, new CustomGrid(Color.Red)[GridLed.Logo]);
+            Assert.AreEqual(Color.red, new CustomGrid(Color.red)[GridLed.Logo]);
         }
 
         [Test]
         public void ShouldSetCorrectColorWithLedIndexer()
         {
             var effect = CustomGrid.Create();
-            effect[GridLed.Logo] = Color.Red;
+            effect[GridLed.Logo] = Color.red;
 
-            Assert.AreEqual(Color.Red, effect[GridLed.Logo]);
+            Assert.AreEqual(Color.red, effect[GridLed.Logo]);
         }
 
         [Test]
@@ -205,7 +206,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
             for (var row = 0; row < Constants.MaxRows; row++)
             {
                 for (var column = 0; column < Constants.MaxColumns; column++)
-                    Assert.AreEqual(Color.Black, effect[row, column]);
+                    Assert.AreEqual(Color.black, effect[row, column]);
             }
         }
 
@@ -213,12 +214,12 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         public void ShouldSetCorrectColorWithSet()
         {
             var effect = CustomGrid.Create();
-            effect.Set(Color.Red);
+            effect.Set(Color.red);
 
             for (var row = 0; row < Constants.MaxRows; row++)
             {
                 for (var column = 0; column < Constants.MaxColumns; column++)
-                    Assert.AreEqual(Color.Red, effect[row, column]);
+                    Assert.AreEqual(Color.red, effect[row, column]);
             }
         }
 
@@ -226,21 +227,21 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         public void ShouldClearToBlack()
         {
             var effect = CustomGrid.Create();
-            effect.Set(Color.Red);
+            effect.Set(Color.red);
             effect.Clear();
 
             for (var row = 0; row < Constants.MaxRows; row++)
             {
                 for (var column = 0; column < Constants.MaxColumns; column++)
-                    Assert.AreEqual(Color.Black, effect[row, column]);
+                    Assert.AreEqual(Color.black, effect[row, column]);
             }
         }
 
         [Test]
         public void ShouldEqualIdenticalEffect()
         {
-            var a = new CustomGrid(Color.Red);
-            var b = new CustomGrid(Color.Red);
+            var a = new CustomGrid(Color.red);
+            var b = new CustomGrid(Color.red);
 
             Assert.True(a == b);
             Assert.False(a != b);
@@ -251,8 +252,8 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldNotEqualDifferentEffect()
         {
-            var a = new CustomGrid(Color.Red);
-            var b = new CustomGrid(Color.Blue);
+            var a = new CustomGrid(Color.red);
+            var b = new CustomGrid(Color.blue);
 
             Assert.False(a == b);
             Assert.True(a != b);
@@ -263,7 +264,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldEqualIdenticalArray()
         {
-            var effect = new CustomGrid(Color.Red);
+            var effect = new CustomGrid(Color.red);
 
             var array = new Color[Constants.MaxRows][];
 
@@ -272,7 +273,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
                 array[row] = new Color[Constants.MaxColumns];
 
                 for (var column = 0; column < Constants.MaxColumns; column++)
-                    array[row][column] = Color.Red;
+                    array[row][column] = Color.red;
             }
 
             Assert.True(effect == array);
@@ -284,7 +285,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldNotEqualDifferentArray()
         {
-            var effect = new CustomGrid(Color.Red);
+            var effect = new CustomGrid(Color.red);
 
             var array = new Color[Constants.MaxRows][];
 
@@ -293,7 +294,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
                 array[row] = new Color[Constants.MaxColumns];
 
                 for (var column = 0; column < Constants.MaxColumns; column++)
-                    array[row][column] = Color.Blue;
+                    array[row][column] = Color.blue;
             }
 
             Assert.False(effect == array);

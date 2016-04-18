@@ -28,6 +28,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
     using Colore.Razer.Mouse.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class StaticTests
@@ -35,13 +36,13 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructWithCorrectColor()
         {
-            Assert.AreEqual(Color.Red, new Static(Led.All, Color.Red).Color);
+            Assert.AreEqual(Color.red, new Static(Led.All, Color.red).Color);
         }
 
         [Test]
         public void ShouldConstructWithCorrectLed()
         {
-            Assert.AreEqual(Led.Logo, new Static(Led.Logo, Color.Black).Led);
+            Assert.AreEqual(Led.Logo, new Static(Led.Logo, Color.black).Led);
         }
     }
 }

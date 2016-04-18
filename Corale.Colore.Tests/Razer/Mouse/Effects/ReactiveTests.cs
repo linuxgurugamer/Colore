@@ -28,6 +28,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
     using Colore.Razer.Mouse.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class ReactiveTests
@@ -37,7 +38,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         {
             const Led Led = Led.Logo;
             const Duration Duration = Duration.Medium;
-            var color = Color.Red;
+            var color = Color.red;
 
             var effect = new Reactive(Led, Duration, color);
 
@@ -49,7 +50,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructWithLedAllWhenTwoParamConstructor()
         {
-            Assert.AreEqual(Led.All, new Reactive(Duration.Medium, Color.Red).Led);
+            Assert.AreEqual(Led.All, new Reactive(Duration.Medium, Color.red).Led);
         }
     }
 }

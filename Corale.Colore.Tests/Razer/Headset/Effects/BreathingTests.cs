@@ -27,6 +27,7 @@ namespace Corale.Colore.Tests.Razer.Headset.Effects
     using Corale.Colore.Razer.Headset.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class BreathingTests
@@ -34,7 +35,7 @@ namespace Corale.Colore.Tests.Razer.Headset.Effects
         [Test]
         public void ShouldConstructWithCorrectColor()
         {
-            Assert.AreEqual(Color.Red, new Breathing(Color.Red).Color);
+            Assert.AreEqual(Color.red, new Breathing(Color.red).Color);
         }
     }
 }

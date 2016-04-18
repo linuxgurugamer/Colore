@@ -28,6 +28,7 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
     using Colore.Razer.Mouse.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class BlinkingTests
@@ -35,13 +36,13 @@ namespace Corale.Colore.Tests.Razer.Mouse.Effects
         [Test]
         public void ShouldConstructWithCorrectLed()
         {
-            Assert.AreEqual(Led.Logo, new Blinking(Led.Logo, Color.Red).Led);
+            Assert.AreEqual(Led.Logo, new Blinking(Led.Logo, Color.red).Led);
         }
 
         [Test]
         public void ShouldConstructWithCorrectColor()
         {
-            Assert.AreEqual(Color.Red, new Blinking(Led.All, Color.Red).Color);
+            Assert.AreEqual(Color.red, new Blinking(Led.All, Color.red).Color);
         }
     }
 }

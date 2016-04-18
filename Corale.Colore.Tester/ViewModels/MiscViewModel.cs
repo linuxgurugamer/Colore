@@ -27,31 +27,30 @@ namespace Corale.Colore.Tester.ViewModels
 {
     using System.ComponentModel;
     using System.Windows.Input;
-    using System.Windows.Media;
     using Annotations;
     using Classes;
-    using Color = Core.Color;
+    using UnityEngine;
 
     public class MiscViewModel : INotifyPropertyChanged
     {
         public MiscViewModel()
         {
-            ColorOne.Color = Color.Red;
+            ColorOne = Color.red;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public SolidColorBrush ColorOne { get; set; } = new SolidColorBrush();
+        public Color ColorOne { get; set; } = default(Color);
 
         public string QueryGuid { get; set; }
 
-        public ICommand AllCommand => new DelegateCommand(() => Core.Chroma.Instance.SetAll(ColorOne.Color));
+        public ICommand AllCommand => new DelegateCommand(() => Core.Chroma.Instance.SetAll(ColorOne));
 
         public ICommand InitializeCommand => new DelegateCommand(() => Core.Chroma.Instance.Initialize());
 
         public ICommand UninitializeCommand => new DelegateCommand(() => Core.Chroma.Instance.Uninitialize());
 
-        public ICommand ClearCommand => new DelegateCommand(() => Core.Chroma.Instance.SetAll(Color.Black));
+        public ICommand ClearCommand => new DelegateCommand(() => Core.Chroma.Instance.SetAll(Color.black));
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged(string propertyName)

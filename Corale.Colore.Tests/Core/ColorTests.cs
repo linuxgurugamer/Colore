@@ -25,6 +25,7 @@
 
 namespace Corale.Colore.Tests.Core
 {
+    /* TODO: Test static Color methods, get rid of the rest
     using Corale.Colore.Core;
 
     using NUnit.Framework;
@@ -380,5 +381,5 @@ namespace Corale.Colore.Tests.Core
             Assert.True(coloreColor.Equals(wpfColor));
             Assert.AreEqual(coloreColor, wpfColor);
         }
-    }
+    } */
 }

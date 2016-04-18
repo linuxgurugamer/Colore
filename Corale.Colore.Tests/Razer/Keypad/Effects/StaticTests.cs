@@ -27,6 +27,7 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
     using Colore.Razer.Keypad.Effects;
 
     using NUnit.Framework;
+    using UnityEngine;
 
     [TestFixture]
     public class StaticTests
@@ -34,7 +35,7 @@ namespace Corale.Colore.Tests.Razer.Keypad.Effects
         [Test]
         public void ShouldConstructWithCorrectColor()
         {
-            Assert.AreEqual(Color.Red, new Static(Color.Red).Color);
+            Assert.AreEqual(Color.red, new Static(Color.red).Color);
         }
     }
 }

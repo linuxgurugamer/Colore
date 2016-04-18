@@ -27,27 +27,27 @@ namespace Corale.Colore.Tester.ViewModels
 {
     using System.ComponentModel;
     using System.Windows.Input;
-    using System.Windows.Media;
     using Annotations;
     using Classes;
+    using UnityEngine;
 
     public class HeadsetViewModel : INotifyPropertyChanged
     {
         public HeadsetViewModel()
         {
-            ColorOne.Color = Core.Color.Red;
+            ColorOne = Color.red;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public SolidColorBrush ColorOne { get; set; } = new SolidColorBrush();
+        public Color ColorOne { get; set; } = default(Color);
 
-        public ICommand AllCommand => new DelegateCommand(() => Core.Headset.Instance.SetAll(ColorOne.Color));
+        public ICommand AllCommand => new DelegateCommand(() => Core.Headset.Instance.SetAll(ColorOne));
 
         public ICommand BreathingCommand
-            => new DelegateCommand(() => Core.Headset.Instance.SetBreathing(ColorOne.Color));
+            => new DelegateCommand(() => Core.Headset.Instance.SetBreathing(ColorOne));
 
-        public ICommand StaticCommand => new DelegateCommand(() => Core.Headset.Instance.SetStatic(ColorOne.Color));
+        public ICommand StaticCommand => new DelegateCommand(() => Core.Headset.Instance.SetStatic(ColorOne));
 
         public ICommand ClearCommand => new DelegateCommand(() => Core.Headset.Instance.Clear());
 
